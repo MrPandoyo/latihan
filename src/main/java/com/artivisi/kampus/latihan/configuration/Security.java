@@ -89,6 +89,8 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/bower_components/**").permitAll()
                 .antMatchers("/dist/**").permitAll()
                 .antMatchers("/plugins/**").permitAll()
+                .antMatchers("/forgotPassword/**").permitAll()
+                .antMatchers("/image/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
