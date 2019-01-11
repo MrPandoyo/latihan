@@ -5,7 +5,6 @@ import com.artivisi.kampus.latihan.entity.Ruangan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.supercsv.cellprocessor.constraint.StrRegEx;
 import org.supercsv.cellprocessor.constraint.UniqueHashCode;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -41,8 +40,8 @@ public class RuanganCsvService {
 
             Ruangan ruangan;
             while( (ruangan = beanReader.read(Ruangan.class, header, processors)) != null ) {
-                System.out.println(String.format("lineNo=%s, rowNo=%s, customer=%s", beanReader.getLineNumber(),
-                        beanReader.getRowNumber(), ruangan));
+                System.out.println(String.format("lineNo=%s, rowNo=%s, ruangan=%s", beanReader.getLineNumber(),
+                        beanReader.getRowNumber(), ruangan.getKodeRuangan()));
 
                 Ruangan newRuangan = new Ruangan();
                 newRuangan.setKodeRuangan(ruangan.getKodeRuangan());
