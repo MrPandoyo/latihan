@@ -22,9 +22,6 @@ public class RuanganCsvService {
 
     private CellProcessor[] mappingHeaderRuangan() {
 
-        final String emailRegex = "[a-z0-9\\._]+@[a-z0-9\\.]+"; // just an example, not very robust!
-        StrRegEx.registerMessage(emailRegex, "must be a valid email address");
-
         final CellProcessor[] processors = new CellProcessor[] {
                 new UniqueHashCode(), // kode_ruangan
         };
@@ -39,7 +36,7 @@ public class RuanganCsvService {
             beanReader = new CsvBeanReader(new InputStreamReader(file.getInputStream()), CsvPreference.STANDARD_PREFERENCE);
 
             // the header elements are used to map the values to the bean (names must match)
-            final String[] header = {"kodeRuangan"};
+            final String[] header = beanReader.getHeader(true) ;
             final CellProcessor[] processors = mappingHeaderRuangan();
 
             Ruangan ruangan;
